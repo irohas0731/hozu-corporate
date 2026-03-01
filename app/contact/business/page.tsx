@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import PageHeader from "@/components/PageHeader";
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
@@ -93,12 +94,27 @@ export default function BusinessContactPage() {
 
     setIsSubmitting(true);
 
-    // Simulate sending (console.log only for now)
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Business form submitted:", formData);
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_BUSINESS_TEMPLATE_ID!,
+        {
+          company: formData.company,
+          name: formData.name,
+          furigana: formData.furigana,
+          email: formData.email,
+          phone: formData.phone || "未入力",
+          category: formData.category,
+          message: formData.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      setIsSubmitted(true);
+    } catch {
+      alert("送信に失敗しました。時間をおいて再度お試しください。");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
