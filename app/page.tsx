@@ -49,10 +49,10 @@ export default function HomePage() {
           </p>
           <div className="mt-10">
             <Link
-              href="/contact"
+              href="/contact/business"
               className="inline-flex items-center gap-2 bg-white text-medical-blue font-bold rounded-lg px-8 py-4 text-base hover:bg-gray-100 transition-colors shadow-lg"
             >
-              お問い合わせはこちら
+              事業者様お問い合わせ
               <ArrowRight size={18} />
             </Link>
           </div>

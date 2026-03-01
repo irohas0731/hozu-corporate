@@ -6,7 +6,8 @@ const siteLinks = [
   { href: "/service", label: "事業内容" },
   { href: "/company", label: "会社概要" },
   { href: "/recruit", label: "採用情報" },
-  { href: "/contact", label: "お問い合わせ" },
+  { href: "/contact", label: "採用お問い合わせ" },
+  { href: "/contact/business", label: "事業者様お問い合わせ" },
 ];
 
 export default function Footer() {

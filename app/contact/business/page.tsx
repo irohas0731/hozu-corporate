@@ -6,6 +6,7 @@ import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 
 type FormData = {
+  company: string;
   name: string;
   furigana: string;
   email: string;
@@ -18,6 +19,7 @@ type FormData = {
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const initialFormData: FormData = {
+  company: "",
   name: "",
   furigana: "",
   email: "",
@@ -28,13 +30,12 @@ const initialFormData: FormData = {
 };
 
 const categories = [
-  "正社員について",
-  "契約社員について",
-  "アルバイトについて",
+  "超音波検査の依頼",
+  "サービスに関するご質問",
   "その他",
 ];
 
-export default function ContactPage() {
+export default function BusinessContactPage() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,6 +43,10 @@ export default function ContactPage() {
 
   const validate = (): FormErrors => {
     const newErrors: FormErrors = {};
+
+    if (!formData.company.trim()) {
+      newErrors.company = "会社名・団体名を入力してください";
+    }
 
     if (!formData.name.trim()) {
       newErrors.name = "お名前を入力してください";
@@ -90,7 +95,7 @@ export default function ContactPage() {
 
     // Simulate sending (console.log only for now)
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Form submitted:", formData);
+    console.log("Business form submitted:", formData);
 
     setIsSubmitting(false);
     setIsSubmitted(true);
@@ -118,7 +123,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHeader title="採用お問い合わせ" />
+      <PageHeader title="事業者様お問い合わせ" />
 
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -137,16 +142,37 @@ export default function ContactPage() {
           ) : (
             <form onSubmit={handleSubmit} noValidate>
               <div className="space-y-6">
+                {/* 会社名・団体名 */}
+                <div>
+                  <label htmlFor="business-company" className="block text-sm font-medium text-text-main mb-2">
+                    会社名・団体名
+                    <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded ml-2">
+                      必須
+                    </span>
+                  </label>
+                  <input
+                    id="business-company"
+                    type="text"
+                    value={formData.company}
+                    onChange={(e) => handleChange("company", e.target.value)}
+                    className={inputClass("company")}
+                    placeholder="株式会社○○"
+                  />
+                  {errors.company && (
+                    <p className="text-red-500 text-sm mt-1">{errors.company}</p>
+                  )}
+                </div>
+
                 {/* お名前 */}
                 <div>
-                  <label htmlFor="contact-name" className="block text-sm font-medium text-text-main mb-2">
+                  <label htmlFor="business-name" className="block text-sm font-medium text-text-main mb-2">
                     お名前
                     <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded ml-2">
                       必須
                     </span>
                   </label>
                   <input
-                    id="contact-name"
+                    id="business-name"
                     type="text"
                     value={formData.name}
                     onChange={(e) => handleChange("name", e.target.value)}
@@ -160,14 +186,14 @@ export default function ContactPage() {
 
                 {/* ふりがな */}
                 <div>
-                  <label htmlFor="contact-furigana" className="block text-sm font-medium text-text-main mb-2">
+                  <label htmlFor="business-furigana" className="block text-sm font-medium text-text-main mb-2">
                     ふりがな
                     <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded ml-2">
                       必須
                     </span>
                   </label>
                   <input
-                    id="contact-furigana"
+                    id="business-furigana"
                     type="text"
                     value={formData.furigana}
                     onChange={(e) => handleChange("furigana", e.target.value)}
@@ -183,14 +209,14 @@ export default function ContactPage() {
 
                 {/* メールアドレス */}
                 <div>
-                  <label htmlFor="contact-email" className="block text-sm font-medium text-text-main mb-2">
+                  <label htmlFor="business-email" className="block text-sm font-medium text-text-main mb-2">
                     メールアドレス
                     <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded ml-2">
                       必須
                     </span>
                   </label>
                   <input
-                    id="contact-email"
+                    id="business-email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => handleChange("email", e.target.value)}
@@ -204,14 +230,14 @@ export default function ContactPage() {
 
                 {/* 電話番号 */}
                 <div>
-                  <label htmlFor="contact-phone" className="block text-sm font-medium text-text-main mb-2">
+                  <label htmlFor="business-phone" className="block text-sm font-medium text-text-main mb-2">
                     電話番号
                     <span className="bg-gray-400 text-white text-xs px-2 py-0.5 rounded ml-2">
                       任意
                     </span>
                   </label>
                   <input
-                    id="contact-phone"
+                    id="business-phone"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => handleChange("phone", e.target.value)}
@@ -225,14 +251,14 @@ export default function ContactPage() {
 
                 {/* お問い合わせ種別 */}
                 <div>
-                  <label htmlFor="contact-category" className="block text-sm font-medium text-text-main mb-2">
+                  <label htmlFor="business-category" className="block text-sm font-medium text-text-main mb-2">
                     お問い合わせ種別
                     <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded ml-2">
                       必須
                     </span>
                   </label>
                   <select
-                    id="contact-category"
+                    id="business-category"
                     value={formData.category}
                     onChange={(e) => handleChange("category", e.target.value)}
                     className={inputClass("category")}
@@ -253,14 +279,14 @@ export default function ContactPage() {
 
                 {/* お問い合わせ内容 */}
                 <div>
-                  <label htmlFor="contact-message" className="block text-sm font-medium text-text-main mb-2">
+                  <label htmlFor="business-message" className="block text-sm font-medium text-text-main mb-2">
                     お問い合わせ内容
                     <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded ml-2">
                       必須
                     </span>
                   </label>
                   <textarea
-                    id="contact-message"
+                    id="business-message"
                     value={formData.message}
                     onChange={(e) => handleChange("message", e.target.value)}
                     className={`${inputClass("message")} min-h-[160px] resize-y`}
@@ -279,9 +305,9 @@ export default function ContactPage() {
 
                 {/* 個人情報同意 */}
                 <div>
-                  <label htmlFor="contact-privacy" className="flex items-start gap-3 cursor-pointer">
+                  <label htmlFor="business-privacy" className="flex items-start gap-3 cursor-pointer">
                     <input
-                      id="contact-privacy"
+                      id="business-privacy"
                       type="checkbox"
                       checked={formData.privacy}
                       onChange={(e) =>

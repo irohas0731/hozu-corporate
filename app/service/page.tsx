@@ -294,10 +294,10 @@ export default function ServicePage() {
               巡回健康診断での超音波検査について、お気軽にお問い合わせください。
             </p>
             <Link
-              href="/contact"
+              href="/contact/business"
               className="inline-flex items-center gap-2 bg-medical-blue text-white rounded-lg px-8 py-3 font-medium hover:bg-medical-blue-dark transition-colors shadow-sm"
             >
-              お問い合わせはこちら
+              事業者様お問い合わせ
               <ArrowRight size={16} />
             </Link>
           </ScrollFadeIn>
