@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | HOZU株式会社",
   },
   description:
-    "HOZU株式会社は巡回健康診断における超音波検査を専門とする企業です。経験豊富な検査技師が全国どこでも出張対応いたします。",
+    "HOZU株式会社は巡回健康診断における超音波検査を専門とする企業です。経験豊富な検査技師が出張対応いたします。",
   openGraph: {
     type: "website",
     locale: "ja_JP",

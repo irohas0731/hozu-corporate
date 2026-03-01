@@ -2,9 +2,6 @@ import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import {
-  Stethoscope,
-  Heart,
-  Activity,
   Users,
   Globe,
   Clock,
@@ -63,19 +60,16 @@ export default function ServicePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {[
               {
-                icon: Stethoscope,
                 title: "腹部エコー",
                 description:
                   "肝臓・胆のう・膵臓・脾臓・腎臓などの腹部臓器を超音波で検査。脂肪肝や胆石、腫瘍などの早期発見に貢献します。",
               },
               {
-                icon: Activity,
                 title: "頸動脈エコー",
                 description:
                   "首の血管（頸動脈）の壁の厚さやプラークの有無を検査。動脈硬化の進行度を把握し、脳梗塞や心筋梗塞のリスク評価に役立ちます。",
               },
               {
-                icon: Heart,
                 title: "乳腺エコー",
                 description:
                   "乳腺組織を超音波で検査し、しこりや腫瘍の有無を確認。マンモグラフィと併用することで、乳がんの早期発見率を高めます。",
@@ -83,9 +77,6 @@ export default function ServicePage() {
             ].map((item, i) => (
               <ScrollFadeIn key={i}>
                 <div className="bg-white border border-border-light rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-medical-blue/10 flex items-center justify-center mb-5">
-                    <item.icon size={28} className="text-medical-blue" />
-                  </div>
                   <h4 className="text-lg font-bold text-text-main mb-3">
                     {item.title}
                   </h4>
@@ -157,9 +148,9 @@ export default function ServicePage() {
               },
               {
                 icon: Globe,
-                title: "全国どこでも出張対応",
+                title: "出張対応可能",
                 description:
-                  "北海道から沖縄まで、日本全国への出張対応が可能です。地域を問わず均一な品質の検査サービスを提供します。",
+                  "健康診断の実施会場へ直接お伺いし、超音波検査を実施いたします。お客様のご要望に合わせた柔軟な対応が可能です。",
               },
               {
                 icon: Clock,

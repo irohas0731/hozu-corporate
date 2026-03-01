@@ -47,7 +47,7 @@ export default function Header() {
             <img
               src="/images/logo.png"
               alt="HOZU株式会社 ロゴ"
-              className="h-[30px] lg:h-[38px] w-auto object-contain"
+              className="h-[42px] lg:h-[52px] w-auto object-contain"
             />
             <div className="flex items-baseline gap-1">
               <span className="font-montserrat text-2xl lg:text-3xl font-bold text-medical-blue tracking-tight">

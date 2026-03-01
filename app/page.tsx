@@ -89,9 +89,9 @@ export default function HomePage() {
               },
               {
                 icon: MapPin,
-                title: "全国出張対応",
+                title: "出張対応可能",
                 description:
-                  "北海道から沖縄まで、全国どこでも出張対応いたします。地域を問わず質の高い検査サービスをお届けします。",
+                  "健康診断の実施会場へ直接お伺いし、超音波検査を実施。お客様のご要望に合わせた柔軟な対応が可能です。",
               },
             ].map((card, i) => (
               <ScrollFadeIn key={i}>
@@ -268,7 +268,7 @@ export default function HomePage() {
               一緒に働く仲間を募集しています
             </h2>
             <p className="mt-4 text-text-sub max-w-xl mx-auto">
-              超音波検査の技術を活かし、全国の健康診断を支えるやりがいのある仕事です。
+              超音波検査の技術を活かし、健康診断を支えるやりがいのある仕事です。
             </p>
             <div className="mt-8">
               <Link
