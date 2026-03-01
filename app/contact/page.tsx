@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import PageHeader from "@/components/PageHeader";
 import Link from "next/link";
@@ -40,6 +40,8 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const formLoadedAt = useRef(Date.now());
 
   const validate = (): FormErrors => {
     const newErrors: FormErrors = {};
@@ -82,6 +84,12 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // スパム対策: ハニーポットに値があればボットと判定
+    if (honeypot) return;
+
+    // スパム対策: フォーム表示から3秒未満の送信はボットと判定
+    if (Date.now() - formLoadedAt.current < 3000) return;
+
     const newErrors = validate();
     setErrors(newErrors);
 
@@ -104,9 +112,8 @@ export default function ContactPage() {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
       setIsSubmitted(true);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : JSON.stringify(err);
-      alert("送信エラー: " + msg);
+    } catch {
+      alert("送信に失敗しました。時間をおいて再度お試しください。");
     } finally {
       setIsSubmitting(false);
     }
@@ -152,6 +159,19 @@ export default function ContactPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate>
+              {/* ハニーポット: ボット対策用の非表示フィールド */}
+              <div aria-hidden="true" style={{ position: "absolute", left: "-9999px" }}>
+                <label htmlFor="contact-website">ウェブサイト</label>
+                <input
+                  id="contact-website"
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               <div className="space-y-6">
                 {/* お名前 */}
                 <div>
@@ -310,6 +330,7 @@ export default function ContactPage() {
                         href="/privacy"
                         className="text-light-blue underline hover:text-medical-blue transition-colors"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         個人情報保護方針
                       </Link>
