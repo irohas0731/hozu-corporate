@@ -104,8 +104,9 @@ export default function ContactPage() {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
       setIsSubmitted(true);
-    } catch {
-      alert("送信に失敗しました。時間をおいて再度お試しください。");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : JSON.stringify(err);
+      alert("送信エラー: " + msg);
     } finally {
       setIsSubmitting(false);
     }
