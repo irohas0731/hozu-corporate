@@ -41,11 +41,15 @@ export default function HomePage() {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
-            確かな技術で、健康をサポートする
+          <h1 className="text-[1.6rem] sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
+            確かな技術で、
+            <br className="sm:hidden" />
+            健康をサポートする
           </h1>
-          <p className="mt-6 text-base sm:text-lg lg:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-            巡回健康診断の超音波検査を専門とするプロフェッショナル集団
+          <p className="mt-6 text-[0.9rem] sm:text-lg lg:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+            巡回健康診断の超音波検査を
+            <br className="sm:hidden" />
+            専門とするプロフェッショナル集団
           </p>
           <div className="mt-10">
             <Link
