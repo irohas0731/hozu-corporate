@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-medical-blue: #1a5276;
+  --color-medical-blue-dark: #143d5a;
+  --color-light-blue: #2980b9;
+  --color-bg-section: #f8f9fa;
+  --color-text-main: #2c3e50;
+  --color-text-sub: #6c757d;
+  --color-accent-green: #27ae60;
+  --color-accent-green-dark: #1e8c4c;
+  --color-border-light: #dee2e6;
+  --color-footer-bg: #1a2332;
+  --font-sans: "Noto Sans JP", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+}
+
+/* Scroll fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+}
+
+.fade-in-up.is-visible {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Hamburger menu animation */
+.hamburger-line {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
