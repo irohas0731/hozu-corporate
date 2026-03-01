@@ -232,7 +232,9 @@ export default function HomePage() {
                 <div className="flex gap-4">
                   <dt className="text-text-sub w-20 shrink-0">所在地</dt>
                   <dd className="text-text-main">
-                    〒579-8003 大阪府東大阪市日下町7-7-33
+                    〒579-8003
+                    <br className="sm:hidden" />
+                    大阪府東大阪市日下町7-7-33
                   </dd>
                 </div>
                 <div className="flex gap-4">

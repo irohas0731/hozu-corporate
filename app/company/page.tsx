@@ -11,7 +11,7 @@ export const metadata = {
 
 const companyInfo = [
   { label: "会社名", value: "HOZU株式会社" },
-  { label: "所在地", value: "〒579-8003 大阪府東大阪市日下町7-7-33" },
+  { label: "所在地", value: "〒579-8003\n大阪府東大阪市日下町7-7-33" },
   { label: "代表取締役", value: "中山 宜範" },
   {
     label: "電話番号",
@@ -67,7 +67,12 @@ export default function CompanyPage() {
                             {item.value}
                           </a>
                         ) : (
-                          item.value
+                          item.value.split("\n").map((line, j) => (
+                            <span key={j}>
+                              {j > 0 && <br />}
+                              {line}
+                            </span>
+                          ))
                         )}
                       </td>
                     </tr>

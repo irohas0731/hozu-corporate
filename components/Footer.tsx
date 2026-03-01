@@ -27,7 +27,9 @@ export default function Footer() {
             <div className="space-y-3 text-gray-300 text-sm">
               <p className="flex items-start gap-2">
                 <MapPin size={16} className="mt-0.5 shrink-0" />
-                〒579-8003 大阪府東大阪市日下町7-7-33
+                〒579-8003
+                <br className="sm:hidden" />
+                大阪府東大阪市日下町7-7-33
               </p>
               <p className="flex items-center gap-2">
                 <Phone size={16} className="shrink-0" />
