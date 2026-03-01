@@ -95,10 +95,10 @@ export default function CompanyPage() {
               サービスに関するご質問やお見積りのご依頼など、お気軽にご連絡ください。
             </p>
             <Link
-              href="/contact"
+              href="/contact/business"
               className="inline-flex items-center gap-2 bg-medical-blue text-white rounded-lg px-8 py-3 font-medium hover:bg-medical-blue-dark transition-colors shadow-sm"
             >
-              お問い合わせはこちら
+              事業者様お問い合わせ
               <ArrowRight size={16} />
             </Link>
           </ScrollFadeIn>
