@@ -60,6 +60,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${notoSansJP.variable} ${montserrat.variable}`}>
       <head>
+        <meta name="google-site-verification" content="IZyhlAyPZCshkDTvXW-qJDsqjimkj7TSBwozsJlzIrs" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
