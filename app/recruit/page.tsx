@@ -57,32 +57,6 @@ export default function RecruitPage() {
       {/* 募集職種セクション */}
       <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* 共通条件ハイライトボックス */}
-          <ScrollFadeIn>
-            <div className="bg-light-blue/10 rounded-xl p-6 lg:p-8 mb-12">
-              <div className="flex items-start gap-3 mb-4">
-                <Info size={22} className="text-light-blue shrink-0 mt-0.5" />
-                <h2 className="text-lg font-bold text-text-main">
-                  共通条件
-                </h2>
-              </div>
-              <ul className="space-y-2 text-sm lg:text-base text-text-main ml-9">
-                <li className="flex items-center gap-2">
-                  <span className="text-accent-green shrink-0">&#10003;</span>
-                  宿泊を伴う出張に対応できる方
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-accent-green shrink-0">&#10003;</span>
-                  出張手当あり
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-accent-green shrink-0">&#10003;</span>
-                  交通費全額支給
-                </li>
-              </ul>
-            </div>
-          </ScrollFadeIn>
-
           {/* 募集職種カード */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {positions.map((pos, i) => (
