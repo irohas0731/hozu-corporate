@@ -38,7 +38,7 @@ const positions = [
     icon: MapPin,
     items: [
       { label: "雇用形態", value: "アルバイト" },
-      { label: "時給", value: "3,200円（最低保証 16,000円/日）" },
+      { label: "時給", value: "3,200円（最低保証 16,000円）" },
       { label: "勤務条件", value: "宿泊を伴う出張に対応できる方歓迎" },
       { label: "出張手当", value: "あり" },
       { label: "交通費", value: "全額支給" },
